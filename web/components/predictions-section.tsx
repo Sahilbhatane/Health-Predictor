@@ -81,92 +81,92 @@ export function PredictionsSection() {
             return (
               <StaggerItem key={prediction.id}>
                 <ScaleOnHover scale={1.02}>
-                  <Card className="group relative overflow-hidden border-2 hover:border-primary/50 transition-all duration-300 h-full">
-                    {/* Background Gradient */}
-                    <div className={`absolute inset-0 bg-gradient-to-br ${prediction.gradient} opacity-0 group-hover:opacity-5 transition-opacity duration-300`} />
-                    
-                    <CardHeader className="relative pb-4">
-                      <div className="flex items-start justify-between">
-                        <div className={`p-2 sm:p-3 rounded-xl sm:rounded-2xl bg-gradient-to-br ${prediction.gradient} text-white mb-3 sm:mb-4`}>
-                          <IconComponent className="h-6 w-6 sm:h-8 sm:w-8" />
-                        </div>
-                        
-                        <motion.div
-                          initial={{ opacity: 0, x: 20 }}
-                          whileInView={{ opacity: 1, x: 0 }}
-                          transition={{ delay: 0.3 + index * 0.1 }}
-                          viewport={{ once: true }}
-                          className="hidden sm:block"
-                        >
-                          <Link href={prediction.href}>
+                  <Link href={prediction.href} className="block h-full">
+                    <Card className="group relative overflow-hidden border-2 hover:border-primary/50 transition-all duration-300 h-full cursor-pointer">
+                      {/* Background Gradient */}
+                      <div className={`absolute inset-0 bg-gradient-to-br ${prediction.gradient} opacity-0 group-hover:opacity-5 transition-opacity duration-300`} />
+                      
+                      <CardHeader className="relative pb-4">
+                        <div className="flex items-start justify-between">
+                          <div className={`p-2 sm:p-3 rounded-xl sm:rounded-2xl bg-gradient-to-br ${prediction.gradient} text-white mb-3 sm:mb-4`}>
+                            <IconComponent className="h-6 w-6 sm:h-8 sm:w-8" />
+                          </div>
+                          
+                          <motion.div
+                            initial={{ opacity: 0, x: 20 }}
+                            whileInView={{ opacity: 1, x: 0 }}
+                            transition={{ delay: 0.3 + index * 0.1 }}
+                            viewport={{ once: true }}
+                            className="hidden sm:block"
+                          >
                             <Button
                               variant="ghost"
                               size="sm"
-                              className="group/btn opacity-0 group-hover:opacity-100 transition-all duration-300 hover:bg-primary/10"
+                              className="group/btn opacity-0 group-hover:opacity-100 transition-all duration-300 hover:bg-primary/10 pointer-events-none"
+                              onClick={(e) => e.preventDefault()}
                             >
                               Try Now
                               <ArrowRight className="ml-2 h-4 w-4 transition-transform duration-300 group-hover/btn:translate-x-1" />
                             </Button>
-                          </Link>
-                        </motion.div>
-                      </div>
-                      
-                      <CardTitle className="text-xl sm:text-2xl font-bold mb-2 group-hover:text-primary transition-colors duration-300">
-                        {prediction.title}
-                      </CardTitle>
-                      
-                      <CardDescription className="text-base sm:text-lg leading-relaxed">
-                        {prediction.description}
-                      </CardDescription>
-                    </CardHeader>
-
-                    <CardContent className="space-y-4">
-                      <div className="space-y-3">
-                        <h4 className="font-semibold text-xs sm:text-sm uppercase tracking-wide text-muted-foreground mb-3">
-                          Key Features
-                        </h4>
+                          </motion.div>
+                        </div>
                         
-                        <motion.div
-                          initial={{ opacity: 0 }}
-                          whileInView={{ opacity: 1 }}
-                          transition={{ delay: 0.4 + index * 0.1 }}
-                          viewport={{ once: true }}
-                          className="grid grid-cols-1 sm:grid-cols-2 gap-2"
-                        >
-                          {prediction.features.map((feature, featureIndex) => (
-                            <motion.div
-                              key={feature}
-                              initial={{ opacity: 0, x: -20 }}
-                              whileInView={{ opacity: 1, x: 0 }}
-                              transition={{ delay: 0.5 + index * 0.1 + featureIndex * 0.05 }}
-                              viewport={{ once: true }}
-                              className="flex items-center space-x-2 text-sm"
-                            >
-                              <CheckCircle className="h-3 w-3 sm:h-4 sm:w-4 text-green-500 flex-shrink-0" />
-                              <span className="text-muted-foreground">{feature}</span>
-                            </motion.div>
-                          ))}
-                        </motion.div>
-                      </div>
+                        <CardTitle className="text-xl sm:text-2xl font-bold mb-2 group-hover:text-primary transition-colors duration-300">
+                          {prediction.title}
+                        </CardTitle>
+                        
+                        <CardDescription className="text-base sm:text-lg leading-relaxed">
+                          {prediction.description}
+                        </CardDescription>
+                      </CardHeader>
 
-                      <motion.div
-                        initial={{ opacity: 0, y: 20 }}
-                        whileInView={{ opacity: 1, y: 0 }}
-                        transition={{ delay: 0.6 + index * 0.1 }}
-                        viewport={{ once: true }}
-                        className="mt-6"
-                      >
-                        <Link href={prediction.href}>
+                      <CardContent className="space-y-4">
+                        <div className="space-y-3">
+                          <h4 className="font-semibold text-xs sm:text-sm uppercase tracking-wide text-muted-foreground mb-3">
+                            Key Features
+                          </h4>
+                          
+                          <motion.div
+                            initial={{ opacity: 0 }}
+                            whileInView={{ opacity: 1 }}
+                            transition={{ delay: 0.4 + index * 0.1 }}
+                            viewport={{ once: true }}
+                            className="grid grid-cols-1 sm:grid-cols-2 gap-2"
+                          >
+                            {prediction.features.map((feature, featureIndex) => (
+                              <motion.div
+                                key={feature}
+                                initial={{ opacity: 0, x: -20 }}
+                                whileInView={{ opacity: 1, x: 0 }}
+                                transition={{ delay: 0.5 + index * 0.1 + featureIndex * 0.05 }}
+                                viewport={{ once: true }}
+                                className="flex items-center space-x-2 text-sm"
+                              >
+                                <CheckCircle className="h-3 w-3 sm:h-4 sm:w-4 text-green-500 flex-shrink-0" />
+                                <span className="text-muted-foreground">{feature}</span>
+                              </motion.div>
+                            ))}
+                          </motion.div>
+                        </div>
+
+                        <motion.div
+                          initial={{ opacity: 0, y: 20 }}
+                          whileInView={{ opacity: 1, y: 0 }}
+                          transition={{ delay: 0.6 + index * 0.1 }}
+                          viewport={{ once: true }}
+                          className="mt-6"
+                        >
                           <Button
-                            className={`w-full group/btn bg-gradient-to-r ${prediction.gradient} hover:shadow-lg hover:shadow-primary/25 transition-all duration-300 hover:scale-[1.02] text-sm sm:text-base py-2 sm:py-3`}
+                            className={`w-full group/btn bg-gradient-to-r ${prediction.gradient} hover:shadow-lg hover:shadow-primary/25 transition-all duration-300 hover:scale-[1.02] text-sm sm:text-base py-2 sm:py-3 pointer-events-none`}
+                            onClick={(e) => e.preventDefault()}
                           >
                             Start Prediction
                             <ArrowRight className="ml-2 h-4 w-4 transition-transform duration-300 group-hover/btn:translate-x-1" />
                           </Button>
-                        </Link>
-                      </motion.div>
-                    </CardContent>
-                  </Card>
+                        </motion.div>
+                      </CardContent>
+                    </Card>
+                  </Link>
                 </ScaleOnHover>
               </StaggerItem>
             );
