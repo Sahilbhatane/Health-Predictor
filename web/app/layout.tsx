@@ -5,6 +5,7 @@ import { Manrope } from "next/font/google"
 import "./globals.css"
 import { ThemeProvider } from "@/components/theme-provider"
 import { SmoothScrollProvider } from "@/components/smooth-scroll-provider"
+import AuthProvider from "@/components/auth-provider"
 
 const manrope = Manrope({
   subsets: ["latin"],
@@ -35,9 +36,11 @@ html {
         `}</style>
       </head>
       <body className={`${GeistSans.variable} ${manrope.variable} antialiased`}>
-        <ThemeProvider attribute="class" defaultTheme="dark" enableSystem={false} disableTransitionOnChange={false}>
-          <SmoothScrollProvider>{children}</SmoothScrollProvider>
-        </ThemeProvider>
+        <AuthProvider>
+          <ThemeProvider attribute="class" defaultTheme="dark" enableSystem={false} disableTransitionOnChange={false}>
+            <SmoothScrollProvider>{children}</SmoothScrollProvider>
+          </ThemeProvider>
+        </AuthProvider>
       </body>
     </html>
   )

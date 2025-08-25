@@ -1,6 +1,6 @@
 # Health Predictor ML Integration
 
-A simple integration of ML models with Next.js frontend using ONNX runtime with Python fallback.
+A simple integration of ML models with Next.js frontend using ONNX runtime with Python fallback, plus optional authentication for enhanced features.
 
 ## 🚀 Quick Start
 
@@ -29,6 +29,15 @@ python ml_service.py
 cd web
 npm run dev
 ```
+
+## 🔐 Authentication (Optional)
+
+- **Predictions work freely** without authentication
+- **Sign in/up** available for saving history and pro features
+- **Beautiful UI** with isolated auth pages
+- **NextAuth.js** with JWT sessions
+
+Visit `/login` or `/signup` to create an account, or continue as a guest.
 
 ## 📊 Available Models
 
